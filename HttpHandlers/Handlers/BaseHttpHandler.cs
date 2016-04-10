@@ -146,7 +146,7 @@ namespace HttpHandlers.Handlers
             => GetCleanName(context.Request[parameterName]);
 
         protected string GetParameterValueFromRouteData(HttpContext context, string parameterName)
-            => GetCleanName((string) context.Request.RequestContext.RouteData.Values[this.ActionParameterName]);
+            => GetCleanName(Convert.ToString(context.Request.RequestContext.RouteData.Values[parameterName]));
 
         protected string GetParameterValue(HttpContext context, string parameterName)
             => this.GetParameterValueFromRawUrl(context, parameterName) ?? this.GetParameterValueFromRouteData(context, parameterName);
